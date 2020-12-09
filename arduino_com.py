@@ -2,8 +2,7 @@ import serial
 import time
 
 class ArduinoCom:
-    """Handles serial communication with the Arduino"""
-
+    # Handles serial communication with the Arduino"
     # Serial Settings
     _SERIAL_PORT = "/dev/ttyAMA0"
     _BAUD = 9600
@@ -14,7 +13,7 @@ class ArduinoCom:
     _GET_BATTERY_LEVEL = "2"
 
     def __init__(self):
-        """Initialize serial communciation with the Arduino"""
+        #"""Initialize serial communciation with the Arduino"""
         try:
             print(f"Connecting to Arduino on '{self._SERIAL_PORT}'...", end='')
             self.ser = serial.Serial(self._SERIAL_PORT, self._BAUD, timeout=self._TIMEOUT)
@@ -26,8 +25,8 @@ class ArduinoCom:
             print("Failed:", e)
 
     def get_parkinfo(self) -> str:
-    """Gets Parkinfo from Arduino"""
-	return self.send_command(self._GET_PARK_INFO)
+       	#Gets Parkinfo from Arduino
+       	return self.send_command(self._GET_PARK_INFO)
 
     def get_battery(self) -> float:
         """Gets battery level from the Arduino"""

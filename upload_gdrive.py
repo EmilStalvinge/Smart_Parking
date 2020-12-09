@@ -15,6 +15,6 @@ yourfile_id = '19CB-WbL9MCQZRHkfxaWsMDz8ssHcAPEV'
 new_file = drive.CreateFile({'title': 'boro.json', 'id': yourfile_id})
 #file_content = new_file.GetContentString()
 #file_content = file_content + '\ntest 2'
-file_content = " {\"park1\": 0, \"park2\": 1, \"park3\": 1,\"park4\": 0,\"park5\": 0,\"park6\": 1,\"park7\": 0,\"park8\": 1}"
+file_content = " {\"park1\": 1, \"park2\": 0, \"park3\": 0,\"park4\": 1,\"park5\": 1,\"park6\": 1,\"park7\": 1,\"park8\": 1}"
 new_file.SetContentString(file_content)
 new_file.Upload()
