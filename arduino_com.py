@@ -2,7 +2,7 @@ import serial
 import time
 
 class ArduinoCom:
-    """Handles serial communication with the Arduino"""
+    # Handles serial communication with the Arduino
 
     # Serial Settings
     _SERIAL_PORT = "/dev/ttyAMA0"
@@ -14,7 +14,7 @@ class ArduinoCom:
     _GET_BATTERY_LEVEL = "2"
 
     def __init__(self):
-        """Initialize serial communciation with the Arduino"""
+        # Initialize serial communciation with the Arduino
         try:
             print(f"Connecting to Arduino on '{self._SERIAL_PORT}'...", end='')
             self.ser = serial.Serial(self._SERIAL_PORT, self._BAUD, timeout=self._TIMEOUT)
@@ -24,26 +24,26 @@ class ArduinoCom:
             print("Ok")
         except serial.SerialException as e:
             print("Failed:", e)
-
+        
     def get_parkinfo(self) -> str:
-    """Gets Parkinfo from Arduino"""
-	return self.send_command(self._GET_PARK_INFO)
+        # Gets Parkinfo from Arduino
+        return self.send_command(self._GET_PARK_INFO)
 
     def get_battery(self) -> float:
-        """Gets battery level from the Arduino"""
-        resp = self.send_command(self._GET_BATTERY)
+        # Gets battery level from the Arduino
+        resp = self.send_command(self._GET_BATTERY_LEVEL)
         try:
             return float(resp)
         except ValueError as e:
             print(f"Error parsing battery voltage '{resp}':", e)
             return 0.0
-
+            
     def serial_ok(self) -> bool:
-        """True if serial is connected ready to go, else false"""
+        # True if serial is connected ready to go, else false
         return self.ser is not None
 
     def close(self):
-        """Close connection to Arduino"""
+        # Close connection to Arduino
         self.ser.close()
 
     def recv_response(self) -> str:
@@ -54,7 +54,7 @@ class ArduinoCom:
             return ""
 
     def send_command(self, command: str) -> str:
-        """Send command and wait for response"""
+        # Send command and wait for response
         if self.serial_ok():
             print(f"Sending command '{ command }' (ascii-code: { int.from_bytes(command.encode(), 'little') })")
             self.ser.write(command.encode())
