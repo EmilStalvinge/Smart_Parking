@@ -1,4 +1,4 @@
-# Ski Parking Sensor
+# Smart Parking sensor cluster with android app
 
 ## Hardware:   
 Arduino nano microcontroller  
